@@ -4,101 +4,99 @@
 //
 //  Created by 정서영 on 3/23/25.
 //
-
+import Foundation
 import SwiftUI
 
 extension Font{
     enum Pretendard{
-        case mainTextBold20
-        case mainTextBold24
-        case mainTextSemibold24
-        case mainTextSemiBold18
-        case mainTextSemiBold16
-        case mainTextSemiBold14
-        case mainTextMedium16
-        case mainTextRegular18
-        case mainTextRegular13
-        case mainTextRegular12
-        case mainTextRegular09
-        case mainTextLight14
-        case mainTextExtraBold24
-        case mainTextSemiBold38
-        case mainTextSemiBold13
+        case bold
+        case semibold
+        case medium
+        case regular
+        case light
+        case extrabold
         
-        var name: String{
+        var value: String{
             switch self{
-            case .mainTextBold20:
+            case .bold:
                 return "Pretendard-Bold"
-            case .mainTextBold24:
-                return "Pretendard-Bold"
-            case .mainTextSemibold24:
+            case .semibold:
                 return "Pretendard-SemiBold"
-            case .mainTextSemiBold18:
-                return "Pretendard-SemiBold"
-            case .mainTextSemiBold16:
-                return "Pretendard-SemiBold"
-            case .mainTextSemiBold14:
-                return "Pretendard-SemiBold"
-            case .mainTextMedium16:
+            case .medium:
                 return "Pretendard-Medium"
-            case .mainTextRegular18:
+            case .regular:
                 return "Pretendard-Regular"
-            case .mainTextRegular13:
-                return "Pretendard-Regular"
-            case .mainTextRegular12:
-                return "Pretendard-Regular"
-            case .mainTextRegular09:
-                return "Pretendard-Regular"
-            case .mainTextLight14:
+            case .light:
                 return "Pretendard-Light"
-            case .mainTextExtraBold24:
+            case .extrabold:
                 return "Pretendard-ExtraBold"
-            case .mainTextSemiBold38:
-                return "Pretendard-SemiBold"
-            case .mainTextSemiBold13:
-                return "Pretendard-SemiBold"
             }
         }
-        
-        var size: CGFloat {
-            switch self {
-            case .mainTextBold20:
-                return 20
-            case .mainTextBold24:
-                return 24
-            case .mainTextSemibold24:
-                return 24
-            case .mainTextSemiBold18:
-                return 18
-            case .mainTextSemiBold16:
-                return 16
-            case .mainTextSemiBold14:
-                return 14
-            case .mainTextMedium16:
-                return 16
-            case .mainTextRegular18:
-                return 18
-            case .mainTextRegular13:
-                return 13
-            case .mainTextRegular12:
-                return 12
-            case .mainTextRegular09:
-                return 09
-            case .mainTextLight14:
-                return 14
-            case .mainTextExtraBold24:
-                return 24
-            case .mainTextSemiBold38:
-                return 38
-            case .mainTextSemiBold13:
-                return 13
-            }
-        }
-
         
     }
     
-    static func pretendard(_ type: Pretendard) -> Font {
-        return .custom(type.name, size: type.size)
+    static func pretend(type: Pretendard, size: CGFloat) -> Font {
+        return .custom(type.value, size: size)
     }
+    
+    static var mainTextBold20: Font {
+        return .pretend(type: .bold, size: 20)
+    }
+    
+    static var mainTextBold24: Font {
+        return .pretend(type: .bold, size: 24)
+    }
+    
+    static var mainTextSemiBold24: Font {
+        return .pretend(type: .semibold, size: 24)
+    }
+    
+    static var mainTextSemiBold18: Font {
+        return .pretend(type: .semibold, size: 18)
+    }
+    
+    static var mainTextSemiBold16: Font {
+        return .pretend(type: .semibold, size: 16)
+    }
+    
+    static var mainTextSemiBold14: Font {
+        return .pretend(type: .semibold, size: 14)
+    }
+    
+    static var mainTextMedium16: Font {
+        return .pretend(type: .medium, size: 16)
+    }
+    
+    static var mainTextRegular18: Font {
+        return .pretend(type: .regular, size: 18)
+    }
+    
+    static var mainTextRegular13: Font {
+        return .pretend(type: .regular, size: 13)
+    }
+    
+    static var mainTextRegular12: Font {
+        return .pretend(type: .regular, size: 12)
+    }
+    
+    static var mainTextRegular09: Font {
+        return .pretend(type: .regular, size: 09)
+    }
+    
+    static var mainTextLight14: Font {
+        return .pretend(type: .light, size: 14)
+    }
+    
+    static var mainTextExtraBold24: Font {
+        return .pretend(type: .extrabold, size: 24)
+    }
+    
+    static var mainTextSemiBold38: Font {
+        return .pretend(type: .semibold, size: 38)
+    }
+    
+    static var mainTextSemiBold13: Font {
+        return .pretend(type: .semibold, size: 13)
+    }
+  
 }
