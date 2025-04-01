@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "상당 광고 이미지 2.pdf",
+      "filename" : "icon.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "상당 광고 이미지 1.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },
