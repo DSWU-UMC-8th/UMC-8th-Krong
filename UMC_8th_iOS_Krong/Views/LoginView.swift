@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum loginField {
+    case id
+    case pwd
+}
+
 struct LoginView: View {
     var body: some View {
         VStack{
@@ -40,18 +45,28 @@ struct LoginView: View {
             Spacer()
         }
     }
-            
+    
+    @State var ViewModel: LoginViewModel = LoginViewModel()
+    @FocusState var focusField: loginField?
+    
     private var loginGroup: some View{
+        
         VStack(alignment:.leading){
-            Text("아이디")
+            TextField("아이디", text: $ViewModel.id)
                 .font(.mainTextRegular13)
                 .foregroundStyle(Color("black01"))
+                .focused($focusField, equals: .id)
             Divider()
+                .background(focusField == .id ? Color("starbucksGreen") : Color("infoGray"))
+                .frame(height: 2)
                 .padding(.bottom, 40)
-            Text("비밀번호")
+                
+            SecureField("비밀번호", text: $ViewModel.pwd)
                 .font(.mainTextRegular13)
                 .foregroundStyle(Color("black01"))
+                .focused($focusField, equals: .pwd)
             Divider()
+                .background(focusField == .pwd ? Color("green01") : Color("infoGray"))
                 .padding(.bottom, 47)
             Button{
                 
@@ -62,10 +77,11 @@ struct LoginView: View {
             }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 13.5)
-                .background(Color("starbucksGreen"))
+                .background(Color("green01"))
                 .cornerRadius(20)
                 
         }
+
     }
 
     private var socialLoginGroup : some View{

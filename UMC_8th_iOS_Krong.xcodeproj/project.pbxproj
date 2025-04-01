@@ -10,22 +10,9 @@
 		44A963D62D8F0A6A003CD983 /* UMC_8th_iOS_Krong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMC_8th_iOS_Krong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		44A9656C2D92F83E003CD983 /* Exceptions for "UMC_8th_iOS_Krong" folder in "UMC_8th_iOS_Krong" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"UMC-8th-iOS-Krong-Info.plist",
-			);
-			target = 44A963D52D8F0A6A003CD983 /* UMC_8th_iOS_Krong */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		44A963D82D8F0A6A003CD983 /* UMC_8th_iOS_Krong */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				44A9656C2D92F83E003CD983 /* Exceptions for "UMC_8th_iOS_Krong" folder in "UMC_8th_iOS_Krong" target */,
-			);
 			path = UMC_8th_iOS_Krong;
 			sourceTree = "<group>";
 		};
