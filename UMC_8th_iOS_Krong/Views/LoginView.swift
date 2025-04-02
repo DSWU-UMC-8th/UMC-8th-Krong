@@ -48,7 +48,6 @@ struct LoginView: View {
     
     @State var ViewModel: LoginViewModel = LoginViewModel()
     @FocusState var focusField: loginField?
-    
     private var loginGroup: some View{
         
         VStack(alignment:.leading){

@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "로그아웃 2.pdf",
+      "filename" : "logout.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "로그아웃 1.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },
