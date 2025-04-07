@@ -13,17 +13,21 @@ enum loginField {
 }
 
 struct LoginView: View {
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        VStack{
-            Spacer()
-            startGroup
-            Spacer()
-            loginGroup
-            Spacer()
-            socialLoginGroup
-            Spacer()
+        NavigationStack{
+            VStack{
+                Spacer()
+                startGroup
+                Spacer()
+                loginGroup
+                Spacer()
+                socialLoginGroup
+                Spacer()
+            }
+            .padding(.horizontal, 19)
         }
-        .padding(.horizontal, 19)
     }
     
     private var startGroup: some View{
@@ -85,18 +89,19 @@ struct LoginView: View {
 
     private var socialLoginGroup : some View{
             VStack{
-                Text("이메일로 회원가입하기")
-                    .underline()
-                    .font(.mainTextRegular12)
-                    .foregroundStyle(Color("Gray02"))
-                    .padding(.bottom, 5)
+                NavigationLink(destination: SignupView()){
+                    Text("이메일로 회원가입하기")
+                        .underline()
+                        .font(.mainTextRegular12)
+                        .foregroundStyle(Color("Gray02"))
+                        .padding(.bottom, 5)
+                }
                 Image("kakao")
                     .padding(.bottom, 5)
                 Image("apple")
             }
             .padding(.horizontal, 19)
     }
-
 }
 
 #Preview("iPhone 11") {
