@@ -10,7 +10,9 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView {
-            Tab("Home", image: "home") {}
+            Tab("Home", image: "home") {
+                HomeView()
+            }
             Tab("Pay", image: "pay") {}
             Tab("Order", image: "order") {}
             Tab("Shop", image: "shop") {}
