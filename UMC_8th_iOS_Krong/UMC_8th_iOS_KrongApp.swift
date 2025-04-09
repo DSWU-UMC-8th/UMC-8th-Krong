@@ -11,7 +11,7 @@ import SwiftUI
 struct UMC_8th_iOS_KrongApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

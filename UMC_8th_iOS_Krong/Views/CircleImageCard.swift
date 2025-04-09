@@ -9,19 +9,15 @@ import SwiftUI
 import Foundation
 
 struct CircleImageCard: View {
-    
-    let menuInfo : RecommendModel
-    
-    init(menuInfo : RecommendModel) {
-        self.menuInfo = menuInfo
-    }
-    
+    let image : Image
+    let name : String
+        
     var body: some View {
         Button(action: {}, label: {
             VStack{
-                menuInfo.menuImage
+                image
                     .padding(.top, 10)
-                Text(menuInfo.menuName)
+                Text(name)
                     .foregroundStyle(.black02)
             }
         })

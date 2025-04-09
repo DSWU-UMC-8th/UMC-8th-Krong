@@ -23,4 +23,12 @@ class HomeViewModel {
         .init(title: "스타벅스 ㅇㅇㅇ점을 찾습니다.", Image: .init(.whatsnew2), info: "스타벅스 커뮤니티 스토어 파트너를 운영할 기관을 공모합니다."),
         .init(title: "2월 8일, 리저브 스프링 신규 커피", Image: .init(.whatsnew3), info: "산뜻하고 달콤한 풍미가 가득한 리저브를 맛보세요.")
     ]
+    
+    var DessertList: [DessertModel] = [
+        .init(name: "너티 크루아상", image: .init(.dessert1)),
+        .init(name: "매콤 소시지 불고기", image: .init(.dessert2)),
+        .init(name: "미니 리프 파이", image: .init(.dessert3)),
+        .init(name: "뺑 오 쇼콜라", image: .init(.dessert4)),
+        .init(name: "소시지&올리브 파이", image: .init(.dessert5))
+    ]
 }

@@ -8,23 +8,21 @@ import SwiftUI
 import Foundation
 
 struct WhatsNewCard: View{
-    let newInfo : WhatsNewModel
-    
-    init(newInfo : WhatsNewModel) {
-        self.newInfo = newInfo
-    }
+    let image: Image
+    let title: String
+    let info: String
     
     var body: some View {
         Button(action: {}, label: {
             VStack{
-                newInfo.Image
+                image
                     .padding(.bottom, 16)
-                Text(newInfo.title)
+                Text(title)
                     .lineLimit(1)
                     .font(.mainTextSemiBold18)
                     .foregroundStyle(.black02)
                     .padding(.bottom, 9)
-                Text(newInfo.info)
+                Text(info)
                     .foregroundStyle(.gray03)
                     .font(.mainTextSemiBold13)
                     .multilineTextAlignment(.leading)

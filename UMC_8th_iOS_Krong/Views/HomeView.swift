@@ -98,7 +98,7 @@ struct HomeView: View {
                 ScrollView(.horizontal){
                     HStack{
                         ForEach(viewModel.recommendList, id: \.menuId){
-                            item in CircleImageCard(menuInfo: item)
+                            item in CircleImageCard(image: item.menuImage, name: item.menuName)
                         }
                     }
                 }
@@ -125,12 +125,44 @@ struct HomeView: View {
                 ScrollView(.horizontal){
                     HStack{
                         ForEach(viewModel.NewList, id: \.newId){
-                            item in WhatsNewCard(newInfo: item)
+                            item in WhatsNewCard(image: item.Image, title: item.title, info: item.info)
                         }
                     }
                 }
             }
             .padding(.leading, 10)
+            .padding(.bottom, 20)
+            
+            // 배너 3
+            VStack{
+                Image(.homeBanner1)
+                Image(.homeBanner2)
+                Image(.homeBanner3)
+            }
+            .padding(.bottom, 20)
+            
+            // 하루가 달콤해지는 디저트
+            VStack(alignment: .leading){
+                Text("하루가 달콤해지는 디저트")
+                    .padding(.leading, 10)
+                    .font(.mainTextSemiBold24)
+                    .foregroundStyle(.black03)
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(viewModel.DessertList, id: \.id){
+                            item in CircleImageCard(image: item.image, name: item.name)
+                        }
+                    }
+                }
+            }
+            
+            // 배너 3
+            VStack{
+                Image(.homeBanner4)
+                Image(.homeBanner5)
+                Image(.homeBanner6)
+            }
+            .padding(.bottom, 20)
         }
     }
 }
