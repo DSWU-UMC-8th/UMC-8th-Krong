@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var viewModel = HomeViewModel()
+    @AppStorage("stNickname") private var nickname: String = "(설정 닉네임)"
+    
     var body: some View {
         topGroup
             .ignoresSafeArea(edges: .top)
         Spacer()
         mainContentGroup
-        
+        Spacer()
     }
     
+    //상단 배너
     private var topGroup: some View {
         ZStack {
             Image(.homeTopBg)
@@ -66,10 +70,39 @@ struct HomeView: View {
         }
     }
     
+    //전체 컨텐츠
     private var mainContentGroup: some View {
         VStack{
+            // 곰돌이 광고
+            Image(.bearAD)
+                .resizable()
+                .scaledToFit()
+                .padding(.bottom, 20)
+            
+            // 유저 추천 메뉴
+            VStack{
+                HStack{
+                    Text("\(nickname)")
+                        .font(.mainTextBold24)
+                        .foregroundStyle(.brown01)
+                    +
+                    Text("님을 위한 추천 메뉴")
+                        .font(.mainTextBold24)
+                    Spacer()
+                }
+                .padding(.bottom, 25)
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(viewModel.recommendList, id: \.menuId){
+                            item in CircleImageCard(menuInfo: item)
+                        }
+                    }
+                }
+            }
+            
             
         }
+        .padding(.horizontal, 10)
     }
 }
 
