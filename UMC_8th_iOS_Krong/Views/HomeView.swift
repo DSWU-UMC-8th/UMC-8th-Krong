@@ -12,20 +12,23 @@ struct HomeView: View {
     @AppStorage("stNickname") private var nickname: String = "(설정 닉네임)"
     
     var body: some View {
-        topGroup
-            .ignoresSafeArea(edges: .top)
-        Spacer()
-        mainContentGroup
-        Spacer()
+        ScrollView{
+            VStack(spacing: 0){
+                topGroup
+                Spacer().frame(height: 23)
+                mainContentGroup
+            }
+        }
+        .ignoresSafeArea(edges: .top)
     }
     
     //상단 배너
     private var topGroup: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Image(.homeTopBg)
                 .resizable()
                 .scaledToFit()
-                .ignoresSafeArea(edges: .top)
+                .ignoresSafeArea(edges: .all)
             
             VStack{
                 HStack{
@@ -34,7 +37,7 @@ struct HomeView: View {
                     Spacer()
                 }
                 .padding(.top, 106)
-                
+                .padding(.bottom, 5)
                 HStack {
                     VStack(alignment: .leading) {
                         Text("11★ until next Reward")
@@ -64,7 +67,6 @@ struct HomeView: View {
                             .foregroundStyle(.brown02)
                     }
                 }
-                .padding(.top, 26)
             }
             .padding(.horizontal, 28)
         }
@@ -78,9 +80,10 @@ struct HomeView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(.bottom, 20)
+                .padding(.horizontal, 10)
             
             // 유저 추천 메뉴
-            VStack{
+            VStack(alignment: .leading){
                 HStack{
                     Text("\(nickname)")
                         .font(.mainTextBold24)
@@ -88,9 +91,10 @@ struct HomeView: View {
                     +
                     Text("님을 위한 추천 메뉴")
                         .font(.mainTextBold24)
-                    Spacer()
                 }
-                .padding(.bottom, 25)
+                .padding(.leading, 10)
+                .padding(.bottom, 10)
+                
                 ScrollView(.horizontal){
                     HStack{
                         ForEach(viewModel.recommendList, id: \.menuId){
@@ -98,11 +102,36 @@ struct HomeView: View {
                         }
                     }
                 }
+                .padding(.leading, 10)
             }
+            .padding(.bottom, 20)
             
-            
+            //Blooming Choux-Pring 배너 및 정규 서비스 론칭 배너 사진
+            VStack{
+                Image(.eventBanner)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .padding(.bottom, 20)
+                Image(.serviceSuscibe)
+            }
+            .padding(.horizontal, 10)
+            .padding(.bottom, 20)
+           
+            //what's new
+            VStack(alignment: .leading){
+                Text("What's New")
+                    .font(.mainTextBold24)
+                    .foregroundStyle(.black03)
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(viewModel.NewList, id: \.newId){
+                            item in WhatsNewCard(newInfo: item)
+                        }
+                    }
+                }
+            }
+            .padding(.leading, 10)
         }
-        .padding(.horizontal, 10)
     }
 }
 

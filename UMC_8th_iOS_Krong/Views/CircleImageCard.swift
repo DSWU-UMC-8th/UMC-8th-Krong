@@ -17,10 +17,14 @@ struct CircleImageCard: View {
     }
     
     var body: some View {
-        VStack{
-            menuInfo.menuImage
-                .padding(.top, 10)
-            Text(menuInfo.menuName)
-        }
+        Button(action: {}, label: {
+            VStack{
+                menuInfo.menuImage
+                    .padding(.top, 10)
+                Text(menuInfo.menuName)
+                    .foregroundStyle(.black02)
+            }
+        })
     }
 }
+
