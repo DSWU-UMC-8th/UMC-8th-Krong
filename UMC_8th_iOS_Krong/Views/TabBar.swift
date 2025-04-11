@@ -24,6 +24,7 @@ struct TabBar: View {
         .onAppear {
             UITabBar.appearance().unselectedItemTintColor = .black01
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

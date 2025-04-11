@@ -14,6 +14,12 @@ enum loginField {
 
 struct LoginView: View {
     @State private var path = NavigationPath()
+    @State var ViewModel: LoginViewModel = LoginViewModel()
+    @FocusState var focusField: loginField?
+    
+    @AppStorage("email") private var storedEmail: String = ""
+    @AppStorage("pwd") private var storedPwd: String = ""
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -27,6 +33,10 @@ struct LoginView: View {
                 Spacer()
             }
             .padding(.horizontal, 19)
+            .navigationBarBackButtonHidden()
+            .navigationDestination(isPresented: $isLoggedIn) {
+                TabBar()
+            }
         }
     }
     
@@ -50,8 +60,7 @@ struct LoginView: View {
         }
     }
     
-    @State var ViewModel: LoginViewModel = LoginViewModel()
-    @FocusState var focusField: loginField?
+
     private var loginGroup: some View{
         
         VStack(alignment:.leading){
@@ -71,13 +80,17 @@ struct LoginView: View {
             Divider()
                 .background(focusField == .pwd ? Color("green01") : Color("infoGray"))
                 .padding(.bottom, 47)
-            Button{
-                
-            }  label: {
+            Button(action:{
+                if ViewModel.id == storedEmail && ViewModel.pwd == storedPwd {
+                    isLoggedIn = true
+                } else {
+                    print("로그인 실패")
+                }
+            },  label: {
                 Text("로그인하기")
                     .foregroundColor(.white)
                     .font(.mainTextMedium16)
-            }
+            })
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 13.5)
                 .background(Color("green01"))

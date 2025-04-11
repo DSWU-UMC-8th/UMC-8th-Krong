@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct UMC_8th_iOS_KrongApp: App {
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            if isLoggedIn {
+                TabBar()
+            } else {
+                LoginView()
+            }
         }
     }
 }

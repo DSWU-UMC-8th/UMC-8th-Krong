@@ -26,6 +26,7 @@ struct HomeView: View {
                 CoffeeDetailView(menuName: coffee)
             }
         }
+        .navigationBarBackButtonHidden()
     }
     
     //상단 배너

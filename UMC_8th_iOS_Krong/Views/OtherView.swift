@@ -9,21 +9,25 @@ import SwiftUI
 
 struct OtherView: View {
     @State private var viewModel = OtherViewModel()
-    @AppStorage("stNickname") private var nickname: String = "(작성한 닉네임)"
+    @AppStorage("nickname") private var nickname: String = "(작성한 닉네임)"
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = true
     
     var body: some View {
-        ZStack{
-            Color(.otherGray)
-            VStack{
-                headerGroup
-                Spacer()
-                userGroup
-                Spacer()
-                payGroup
-                Spacer()
-                otherGroup
-                Spacer()
+        NavigationStack{
+            ZStack{
+                Color(.otherGray)
+                VStack{
+                    headerGroup
+                    Spacer()
+                    userGroup
+                    Spacer()
+                    payGroup
+                    Spacer()
+                    otherGroup
+                    Spacer()
+                }
             }
+            .navigationBarBackButtonHidden()
         }
     }
     
@@ -32,7 +36,9 @@ struct OtherView: View {
             Text("Other")
                 .font(.mainTextBold24)
             Spacer()
-            Button(action:{print("로그아웃")}, label: {
+            Button(action:{
+                isLoggedIn = false
+            }, label: {
                 Image(.logout)
             })
         }
