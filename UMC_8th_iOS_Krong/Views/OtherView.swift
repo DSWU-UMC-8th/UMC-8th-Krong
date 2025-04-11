@@ -13,23 +13,24 @@ struct OtherView: View {
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = true
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                Color(.otherGray)
-                VStack{
-                    headerGroup
-                    Spacer()
-                    userGroup
-                    Spacer()
-                    payGroup
-                    Spacer()
-                    otherGroup
-                    Spacer()
+        if !isLoggedIn {
+            LoginView()
+        } else{
+            NavigationStack{
+                ZStack{
+                    Color(.otherGray)
+                    VStack{
+                        headerGroup
+                        Spacer()
+                        userGroup
+                        Spacer()
+                        payGroup
+                        Spacer()
+                        otherGroup
+                        Spacer()
+                    }
                 }
-            }
-            .navigationBarBackButtonHidden()
-            .navigationDestination(isPresented:.constant(!isLoggedIn)) {
-                LoginView()
+                .navigationBarBackButtonHidden()
             }
         }
     }

@@ -22,20 +22,21 @@ struct LoginView: View {
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     
     var body: some View {
-        NavigationStack{
-            VStack{
-                Spacer()
-                startGroup
-                Spacer()
-                loginGroup
-                Spacer()
-                socialLoginGroup
-                Spacer()
-            }
-            .padding(.horizontal, 19)
-            .navigationBarBackButtonHidden()
-            .navigationDestination(isPresented: $isLoggedIn) {
-                TabBar()
+        if isLoggedIn {
+            TabBar()
+        } else{
+            NavigationStack{
+                VStack{
+                    Spacer()
+                    startGroup
+                    Spacer()
+                    loginGroup
+                    Spacer()
+                    socialLoginGroup
+                    Spacer()
+                }
+                .padding(.horizontal, 19)
+                .navigationBarBackButtonHidden()
             }
         }
     }
