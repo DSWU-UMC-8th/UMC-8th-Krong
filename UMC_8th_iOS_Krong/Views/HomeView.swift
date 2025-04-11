@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var viewModel = HomeViewModel()
-    @AppStorage("stNickname") private var nickname: String = "(설정 닉네임)"
+    @AppStorage("nickname") private var nickname: String = "(설정 닉네임)"
     @State private var path = NavigationPath()
     
     var body: some View {

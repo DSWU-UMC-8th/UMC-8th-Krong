@@ -28,6 +28,9 @@ struct OtherView: View {
                 }
             }
             .navigationBarBackButtonHidden()
+            .navigationDestination(isPresented:.constant(!isLoggedIn)) {
+                LoginView()
+            }
         }
     }
     
