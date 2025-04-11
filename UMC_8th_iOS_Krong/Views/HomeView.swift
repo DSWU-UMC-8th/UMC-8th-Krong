@@ -10,16 +10,22 @@ import SwiftUI
 struct HomeView: View {
     @State private var viewModel = HomeViewModel()
     @AppStorage("stNickname") private var nickname: String = "(설정 닉네임)"
+    @State private var path = NavigationPath()
     
     var body: some View {
-        ScrollView{
-            VStack(spacing: 0){
-                topGroup
-                Spacer().frame(height: 23)
-                mainContentGroup
+        NavigationStack(path: $path){
+            ScrollView{
+                VStack(spacing: 0){
+                    topGroup
+                    Spacer().frame(height: 23)
+                    mainContentGroup
+                }
+            }
+            .ignoresSafeArea(edges: .top)
+            .navigationDestination(for: String.self) { coffee in
+                CoffeeDetailView(menuName: coffee)
             }
         }
-        .ignoresSafeArea(edges: .top)
     }
     
     //상단 배너
@@ -98,11 +104,16 @@ struct HomeView: View {
                 ScrollView(.horizontal){
                     HStack{
                         ForEach(viewModel.recommendList, id: \.menuId){
-                            item in CircleImageCard(image: item.menuImage, name: item.menuName)
+                            item in
+                            Button(action: {path.append(item.menuName)}, label: {
+                                CircleImageCard(image: item.menuImage, name: item.menuName)
+                            })
+                            
                         }
                     }
                 }
                 .padding(.leading, 10)
+                
             }
             .padding(.bottom, 20)
             

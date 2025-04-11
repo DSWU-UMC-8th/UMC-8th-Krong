@@ -11,16 +11,15 @@ import Foundation
 struct CircleImageCard: View {
     let image : Image
     let name : String
-        
+    
     var body: some View {
-        Button(action: {}, label: {
-            VStack{
-                image
-                    .padding(.top, 10)
-                Text(name)
-                    .foregroundStyle(.black02)
-            }
-        })
+        VStack{
+            image
+                .padding(.top, 10)
+            Text(name)
+                .foregroundStyle(.black02)
+        }
     }
+    
 }
 
