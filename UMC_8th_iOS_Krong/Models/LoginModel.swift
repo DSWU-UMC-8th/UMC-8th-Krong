@@ -10,4 +10,5 @@ import Foundation
 struct LoginMeodel: Codable {
     let id: String
     let password: String
+    let isLoggedIn: Bool
 }

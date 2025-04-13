@@ -11,5 +11,4 @@ import Foundation
 class LoginViewModel {
     var id: String = ""
     var pwd: String = ""
-
 }
