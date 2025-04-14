@@ -13,17 +13,32 @@ enum loginField {
 }
 
 struct LoginView: View {
+    @State private var path = NavigationPath()
+    @State var ViewModel: LoginViewModel = LoginViewModel()
+    @FocusState var focusField: loginField?
+    
+    @AppStorage("email") private var storedEmail: String = ""
+    @AppStorage("pwd") private var storedPwd: String = ""
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
+    
     var body: some View {
-        VStack{
-            Spacer()
-            startGroup
-            Spacer()
-            loginGroup
-            Spacer()
-            socialLoginGroup
-            Spacer()
+        if isLoggedIn {
+            TabBar()
+        } else{
+            NavigationStack{
+                VStack{
+                    Spacer()
+                    startGroup
+                    Spacer()
+                    loginGroup
+                    Spacer()
+                    socialLoginGroup
+                    Spacer()
+                }
+                .padding(.horizontal, 19)
+                .navigationBarBackButtonHidden()
+            }
         }
-        .padding(.horizontal, 19)
     }
     
     private var startGroup: some View{
@@ -46,8 +61,7 @@ struct LoginView: View {
         }
     }
     
-    @State var ViewModel: LoginViewModel = LoginViewModel()
-    @FocusState var focusField: loginField?
+
     private var loginGroup: some View{
         
         VStack(alignment:.leading){
@@ -67,13 +81,17 @@ struct LoginView: View {
             Divider()
                 .background(focusField == .pwd ? Color("green01") : Color("infoGray"))
                 .padding(.bottom, 47)
-            Button{
-                
-            }  label: {
+            Button(action:{
+                if ViewModel.id == storedEmail && ViewModel.pwd == storedPwd {
+                    isLoggedIn = true
+                } else {
+                    print("로그인 실패")
+                }
+            },  label: {
                 Text("로그인하기")
                     .foregroundColor(.white)
                     .font(.mainTextMedium16)
-            }
+            })
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 13.5)
                 .background(Color("green01"))
@@ -85,18 +103,19 @@ struct LoginView: View {
 
     private var socialLoginGroup : some View{
             VStack{
-                Text("이메일로 회원가입하기")
-                    .underline()
-                    .font(.mainTextRegular12)
-                    .foregroundStyle(Color("Gray02"))
-                    .padding(.bottom, 5)
+                NavigationLink(destination: SignupView()){
+                    Text("이메일로 회원가입하기")
+                        .underline()
+                        .font(.mainTextRegular12)
+                        .foregroundStyle(Color("Gray02"))
+                        .padding(.bottom, 5)
+                }
                 Image("kakao")
                     .padding(.bottom, 5)
                 Image("apple")
             }
             .padding(.horizontal, 19)
     }
-
 }
 
 #Preview("iPhone 11") {

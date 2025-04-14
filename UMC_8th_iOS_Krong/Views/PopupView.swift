@@ -13,7 +13,7 @@ struct PopupView: View {
     var body: some View {
         VStack{
             Image("adv")
-//                .ignoresSafeArea(edges: .top)
+                .ignoresSafeArea(edges: .top)
             Spacer()
             
             buttonGroup
