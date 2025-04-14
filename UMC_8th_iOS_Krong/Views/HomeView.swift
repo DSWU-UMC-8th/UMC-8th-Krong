@@ -11,6 +11,7 @@ struct HomeView: View {
     @State private var viewModel = HomeViewModel()
     @AppStorage("nickname") private var nickname: String = "(설정 닉네임)"
     @State private var path = NavigationPath()
+    @State private var showPopup = true
     
     var body: some View {
         NavigationStack(path: $path){
@@ -27,6 +28,9 @@ struct HomeView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .fullScreenCover(isPresented: $showPopup) {
+            PopupView()
+        }
     }
     
     //상단 배너
