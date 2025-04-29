@@ -14,11 +14,13 @@ enum signupField {
 }
 
 struct SignupView: View {
-    @StateObject var ViewModel:  SignupViewModel = SignupViewModel()
+    @StateObject var ViewModel: SignupViewModel = SignupViewModel()
     @FocusState var focusField: signupField?
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack{
+            headerGroup
             Spacer()
             signupGroup
             Spacer()
@@ -26,6 +28,23 @@ struct SignupView: View {
                 .padding(.bottom, 72)
         }
         .padding(.horizontal, 19)
+        .navigationBarBackButtonHidden()
+    }
+    
+    private var headerGroup: some View {
+        HStack{
+            Button(action: {
+                dismiss()
+            }, label: {
+                Image(.goback)
+            })
+            
+            Spacer()
+            Text("가입하기")
+                .font(.title2)
+            Spacer()
+        }
+        .padding(.top, 18)
     }
 
     private var signupGroup: some View {
@@ -59,7 +78,10 @@ struct SignupView: View {
     
     private var buttonGroup: some View {
         Button(action: {
-            ViewModel.signup()
+            if ViewModel.user.nickname.count > 0 && ViewModel.user.email.count > 0 && ViewModel.user.pwd.count > 0 {
+                ViewModel.signup()
+                dismiss()
+            }
         }, label: {
             Text("생성하기")
                 .font(.mainTextRegular18)
