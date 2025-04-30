@@ -10,14 +10,12 @@ import SwiftUI
 struct UserGroupButton: View {
     
     let buttonInfo : OtherModel
-    
-    init(buttonInfo: OtherModel) {
-        self.buttonInfo = buttonInfo
-    }
+    let action: () -> Void
     
     var body: some View {
         Button(action: {
             print(buttonInfo.title)
+            action()
         }, label: {
             VStack{
                 buttonInfo.image
@@ -31,6 +29,7 @@ struct UserGroupButton: View {
         .background(Color.white)
         .cornerRadius(19)
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
+        
     }
 }
 

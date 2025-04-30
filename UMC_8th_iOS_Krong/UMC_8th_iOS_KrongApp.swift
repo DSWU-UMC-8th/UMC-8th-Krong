@@ -19,5 +19,6 @@ struct UMC_8th_iOS_KrongApp: App {
                 LoginView()
             }
         }
+        .modelContainer(for: ReceiptModel.self)
     }
 }

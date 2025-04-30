@@ -57,7 +57,7 @@ struct HomeView: View {
                         GeometryReader{ geometry in
                             ZStack(alignment: .leading) {
                                 Capsule()
-                                    .foregroundStyle(.infoGray)
+                                    .foregroundStyle(.gray01)
                                 Capsule()
                                     .frame(width: geometry.size.width * 0.4)
                                     .foregroundStyle(.brown02)
