@@ -11,12 +11,19 @@ struct OtherView: View {
     @State private var viewModel = OtherViewModel()
     @AppStorage("nickname") private var nickname: String = "(작성한 닉네임)"
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = true
+    @State private var path: [OtherNavigation] = []
+
+
+    
+    enum OtherNavigation: Hashable {
+        case receipt
+    }
     
     var body: some View {
         if !isLoggedIn {
             LoginView()
         } else{
-            NavigationStack{
+            NavigationStack(path: $path){
                 ZStack{
                     Color(.otherGray)
                     VStack{
@@ -28,6 +35,12 @@ struct OtherView: View {
                         Spacer()
                         otherGroup
                         Spacer()
+                    }
+                }
+                .navigationDestination (for: OtherNavigation.self) { destination in
+                    switch destination {
+                    case .receipt:
+                        ReceiptView()
                     }
                 }
                 .navigationBarBackButtonHidden()
@@ -67,11 +80,16 @@ struct OtherView: View {
                 .foregroundStyle(.black01)
                 .padding(.bottom, 24)
             HStack(spacing: 10.5) {
-                ForEach(viewModel.userButton, id: \.title) { button in UserGroupButton(buttonInfo: button)
+                ForEach(viewModel.userButton, id: \.title) { button in
+                    UserGroupButton(buttonInfo: button) {
+                        if button.title == "전자영수증" {
+                            path.append(.receipt)
+                        }
+                    }
                 }
             }
         }
-    }
+                }
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
